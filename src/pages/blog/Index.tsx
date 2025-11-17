@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Menu, X } from 'lucide-react'
 import { supabase } from '../../../lib/supabase'
 import { BlogPost as BlogPostType, BlogCategory } from '../../../lib/supabase'
 
@@ -9,6 +10,7 @@ const BlogIndex: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [searchTerm, setSearchTerm] = useState<string>('')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     loadData()
@@ -225,10 +227,12 @@ const BlogIndex: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-2xl font-semibold text-gray-900 hover:text-deep-teal-600 transition-colors" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
+              <Link to="/" className="text-xl md:text-2xl font-semibold text-gray-900 hover:text-deep-teal-600 transition-colors" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
                 BlackSea 
               </Link>
             </div>
+            
+            {/* Десктоп навігація */}
             <nav className="hidden md:flex space-x-8">
               <Link to="/" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
                 Головна
@@ -246,18 +250,69 @@ const BlogIndex: React.FC = () => {
                 Контакти
               </Link>
             </nav>
+            
+            {/* Мобільне меню кнопка */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-md text-gray-700 hover:text-deep-teal-600 hover:bg-gray-100 transition-colors"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
+        
+        {/* Мобільне меню */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200">
+            <div className="px-4 py-2 space-y-1">
+              <Link
+                to="/"
+                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Головна
+              </Link>
+              <Link
+                to="/blog"
+                className="block px-3 py-2 text-deep-teal-600 bg-deep-teal-50 font-medium rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Блог
+              </Link>
+              <Link
+                to="/services"
+                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Послуги
+              </Link>
+              <Link
+                to="/about"
+                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Про нас
+              </Link>
+              <Link
+                to="/contact"
+                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Контакти
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero секція */}
-      <div className="bg-hero-teal text-white py-20 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-hero-teal text-white py-12 md:py-20 mt-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-sf-pro-display">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
               BlackSea
             </h1>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-xl text-gray-200 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-1">
               Актуальні статті, гайди та кейси для українського бізнесу. 
               Дізнавайтесь першими про нові технології та можливості автоматизації.
             </p>
@@ -265,12 +320,12 @@ const BlogIndex: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-12">
         {/* Кнопка повернення */}
         <div className="mb-8">
           <Link 
             to="/" 
-            className="inline-flex items-center px-4 py-2 bg-deep-teal-600 text-white rounded-lg hover:bg-deep-teal-700 transition-colors font-medium shadow-md"
+            className="inline-flex items-center px-3 py-2 md:px-4 md:py-2 bg-deep-teal-600 text-white rounded-lg hover:bg-deep-teal-700 transition-colors font-medium shadow-md text-sm md:text-base"
           >
             ← Повернутися на головну
           </Link>
@@ -278,21 +333,21 @@ const BlogIndex: React.FC = () => {
 
         {/* Пошук та фільтри */}
         <div className="mb-8">
-          <div className="flex flex-col md:flex-row gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-4 md:mb-6">
             <div className="flex-1">
               <input
                 type="text"
                 placeholder="Пошук по статтях..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-teal-500 focus:border-transparent"
+                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-teal-500 focus:border-transparent text-sm md:text-base"
               />
             </div>
-            <div className="md:w-64">
+            <div className="w-full sm:w-48 md:w-64">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-teal-500 focus:border-transparent"
+                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-teal-500 focus:border-transparent text-sm md:text-base"
               >
                 <option value="">Всі категорії</option>
                 {categories.map(category => (
@@ -305,10 +360,10 @@ const BlogIndex: React.FC = () => {
           </div>
 
           {/* Категорії */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 md:gap-2">
             <button
               onClick={() => setSelectedCategory('')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${
                 !selectedCategory 
                   ? 'bg-deep-teal-600 text-white' 
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
@@ -320,7 +375,7 @@ const BlogIndex: React.FC = () => {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${
                   selectedCategory === category.id 
                     ? 'bg-deep-teal-600 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
@@ -333,7 +388,7 @@ const BlogIndex: React.FC = () => {
         </div>
 
         {/* Статті */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {filteredPosts.map(post => (
             <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
               {post.featured_image_url && (
@@ -346,23 +401,23 @@ const BlogIndex: React.FC = () => {
                 </div>
               )}
               
-              <div className="p-6">
+              <div className="p-4 md:p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="inline-block bg-deep-teal-100 text-deep-teal-800 text-xs px-2 py-1 rounded-full font-medium">
                     {post.category?.name_uk}
                   </span>
-                  <span className="text-gray-500 text-sm">
+                  <span className="text-gray-500 text-xs md:text-sm">
                     {getReadingTime(post.content_uk || '')} хв читання
                   </span>
                 </div>
                 
-                <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                   <Link to={`/blog/${post.slug}`} className="hover:text-deep-teal-600">
                     {post.title_uk}
                   </Link>
                 </h2>
                 
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 mb-4 text-sm md:text-base line-clamp-3">
                   {post.excerpt_uk}
                 </p>
                 
@@ -372,14 +427,14 @@ const BlogIndex: React.FC = () => {
                       <img
                         src={post.author.avatar_url}
                         alt={post.author.name}
-                        className="w-8 h-8 rounded-full"
+                        className="w-6 h-6 md:w-8 md:h-8 rounded-full"
                       />
                     )}
                     <div>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-xs md:text-sm font-medium text-gray-900">
                         {post.author?.name}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-xs text-gray-500">
                         {formatDate(post.published_at || post.created_at)}
                       </p>
                     </div>
@@ -387,7 +442,7 @@ const BlogIndex: React.FC = () => {
                   
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="text-deep-teal-600 hover:text-deep-teal-800 font-medium text-sm"
+                    className="text-deep-teal-600 hover:text-deep-teal-800 font-medium text-xs md:text-sm"
                   >
                     Читати далі →
                   </Link>
