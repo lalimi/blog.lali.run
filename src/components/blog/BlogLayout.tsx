@@ -105,8 +105,11 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
                   BlackSea Digital
                 </Link>
               </div>
-              <nav className="hidden md:flex space-x-8">
-                <Link to="/blog" className="text-gray-700 hover:text-gray-900 font-medium">
+              <nav className="hidden md:flex space-x-8 items-center">
+                <Link to="/" className="text-gray-700 hover:text-gray-900 font-medium">
+                  Головна
+                </Link>
+                <Link to="/blog" className="text-blue-600 font-medium border-b-2 border-blue-600 pb-1">
                   Блог
                 </Link>
                 <Link to="/services" className="text-gray-700 hover:text-gray-900 font-medium">
@@ -117,6 +120,12 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
                 </Link>
                 <Link to="/contact" className="text-gray-700 hover:text-gray-900 font-medium">
                   Контакти
+                </Link>
+                <Link 
+                  to="/admin/blog" 
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium"
+                >
+                  Адмін
                 </Link>
               </nav>
             </div>

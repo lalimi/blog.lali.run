@@ -194,7 +194,19 @@ const AdminBlogPostForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">Створити нову статтю</h1>
+      {/* Навігація форми */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Створити нову статтю</h1>
+        <Link
+          to="/blog"
+          className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-blue-700 transition-all duration-200 flex items-center gap-2"
+        >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12.586l-4.293-4.293a1 1 0 011.414-1.414L10 9.758l2.879-2.879a1 1 0 111.414 1.414L11.414 12.586l4.293 4.293a1 1 0 01-1.414 1.414L10 15.414l-2.879 2.879a1 1 0 01-1.414-1.414L8.586 12.586z"/>
+          </svg>
+          Перейти до блогу
+        </Link>
+      </div>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Основна інформація */}

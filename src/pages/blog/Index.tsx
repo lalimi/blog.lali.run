@@ -220,6 +220,36 @@ const BlogIndex: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Хедер з навігацією */}
+      <header className="bg-white shadow-sm sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                BlackSea Digital
+              </Link>
+            </div>
+            <nav className="hidden md:flex space-x-8">
+              <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                Головна
+              </Link>
+              <Link to="/blog" className="text-blue-600 font-medium border-b-2 border-blue-600 pb-1">
+                Блог
+              </Link>
+              <Link to="/services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                Послуги
+              </Link>
+              <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                Про нас
+              </Link>
+              <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                Контакти
+              </Link>
+            </nav>
+          </div>
+        </div>
+      </header>
+
       {/* Hero секція */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
