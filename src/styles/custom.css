@@ -1,0 +1,69 @@
+/* Додаткові стилі для бренду BlackSea */
+
+.hero--teal {
+  background: radial-gradient(1200px circle at 70% 10%, #134E5E 0%, rgba(19,78,94,0.6) 35%, rgba(11,48,55,0.8) 60%, #0B3037 100%);
+  color: #E6F2F3;
+}
+
+.btn--accent {
+  background: #0f8f98;
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+}
+
+.btn--accent:hover {
+  filter: saturate(1.05) brightness(1.05);
+}
+
+/* Налаштування шрифтів */
+.font-display {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+}
+
+.font-body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Покращення читабельності */
+.text-brand-text {
+  color: #111827;
+}
+
+.bg-brand-bg {
+  background-color: #F5F7F8;
+}
+
+/* Кольори бренду */
+.text-deep-teal-primary {
+  color: #0B3037;
+}
+
+.bg-deep-teal-primary {
+  background-color: #0B3037;
+}
+
+.text-deep-teal-accent {
+  color: #134E5E;
+}
+
+.bg-deep-teal-accent {
+  background-color: #134E5E;
+}
+
+/* Анімації та ефекти */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Покращення для мобільних пристроїв */
+@media (max-width: 768px) {
+  .font-body {
+    font-size: 16px;
+  }
+  
+  .font-display {
+    font-size: 2.5rem;
+  }
+}

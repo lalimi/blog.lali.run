@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../../../../lib/supabase'
 import { BlogPost, BlogCategory, BlogTag, BlogAuthor } from '../../../../lib/supabase'
 import SEOGenerator from '../../../components/admin/SEOGenerator'
