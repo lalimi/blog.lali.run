@@ -8,7 +8,7 @@
     "build": "npm run build:client && npm run build:api",
     "build:client": "tsc -b && vite build",
     "build:api": "cd api && npm install && npx tsc && cd .. && npm run copy:api",
-    "copy:api": "mkdir -p dist/api && cp -r api/dist/* dist/api/ 2>/dev/null || true && cp api/index.js dist/api/ 2>/dev/null || true && cp api/package.json dist/api/ 2>/dev/null || true",
+    "copy:api": "mkdir -p dist/api && cp -r api/dist/* dist/api/ 2>/dev/null || true && cp api/vercel.ts dist/api/ 2>/dev/null || true && cp api/package.json dist/api/ 2>/dev/null || true",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc --noEmit",
