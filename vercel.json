@@ -3,7 +3,10 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "functions": {
-    "api/**/*.ts": {
+    "api/index.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/[...all].js": {
       "runtime": "nodejs18.x"
     }
   },
@@ -27,10 +30,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/api/admin/(.*)",
-      "destination": "/api/admin/$1"
-    },
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
