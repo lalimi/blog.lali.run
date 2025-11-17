@@ -40,9 +40,9 @@ const BlogIndex: React.FC = () => {
       if (!postsData || postsData.length === 0) {
         console.log('Використовуємо мокові дані для локального тестування')
         setCategories([
-          { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#3B82F6', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-          { id: '2', name_uk: 'SEO маркетинг', name_en: 'SEO Marketing', slug: 'seo-marketing', color: '#10B981', sort_order: 2, description_uk: 'Поради з пошукової оптимізації та цифрового маркетингу', description_en: 'SEO and digital marketing tips', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-          { id: '3', name_uk: 'Digital трансформація', name_en: 'Digital Transformation', slug: 'digital-transformation', color: '#F59E0B', sort_order: 3, description_uk: 'Цифрова трансформація бізнесу', description_en: 'Business digital transformation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
+          { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#134E5E', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: '2', name_uk: 'SEO маркетинг', name_en: 'SEO Marketing', slug: 'seo-marketing', color: '#0b6e74', sort_order: 2, description_uk: 'Поради з пошукової оптимізації та цифрового маркетингу', description_en: 'SEO and digital marketing tips', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+          { id: '3', name_uk: 'Digital трансформація', name_en: 'Digital Transformation', slug: 'digital-transformation', color: '#0f8f98', sort_order: 3, description_uk: 'Цифрова трансформація бізнесу', description_en: 'Business digital transformation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
         ])
         
         setPosts([
@@ -56,7 +56,7 @@ const BlogIndex: React.FC = () => {
             content_uk: '<p>Штучний інтелект стає невід\'ємною частиною сучасного українського бізнесу...</p>',
             content_en: '<p>Artificial intelligence is becoming an integral part of modern Ukrainian business...</p>',
             category_id: '1',
-            category: { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#3B82F6', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+            category: { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#134E5E', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
             author_id: '1',
             author: { id: '1', name: 'Олександр Коваль', bio_uk: 'Експерт з AI та автоматизації', bio_en: 'AI & Automation Expert', avatar_url: null, position_uk: 'Головний редактор', position_en: 'Chief Editor', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
             featured_image_url: '/images/blog/ai-ukraine-2024.jpg',
@@ -86,7 +86,7 @@ const BlogIndex: React.FC = () => {
             content_uk: '<p>Пошукова оптимізація є критично важливою для успіху українського бізнесу...</p>',
             content_en: '<p>Search engine optimization is critical for the success of Ukrainian business...</p>',
             category_id: '2',
-            category: { id: '2', name_uk: 'SEO маркетинг', name_en: 'SEO Marketing', slug: 'seo-marketing', color: '#10B981', sort_order: 2, description_uk: 'Поради з пошукової оптимізації та цифрового маркетингу', description_en: 'SEO and digital marketing tips', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+            category: { id: '2', name_uk: 'SEO маркетинг', name_en: 'SEO Marketing', slug: 'seo-marketing', color: '#0b6e74', sort_order: 2, description_uk: 'Поради з пошукової оптимізації та цифрового маркетингу', description_en: 'SEO and digital marketing tips', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
             author_id: '1',
             author: { id: '1', name: 'Олександр Коваль', bio_uk: 'Експерт з AI та автоматизації', bio_en: 'AI & Automation Expert', avatar_url: null, position_uk: 'Головний редактор', position_en: 'Chief Editor', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
             featured_image_url: '/images/blog/seo-guide-ukraine.jpg',
@@ -116,7 +116,7 @@ const BlogIndex: React.FC = () => {
             content_uk: '<p>Автоматизація бізнес-процесів допомагає українським компаніям...</p>',
             content_en: '<p>Business process automation helps Ukrainian companies...</p>',
             category_id: '1',
-            category: { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#3B82F6', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+            category: { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#134E5E', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
             author_id: '1',
             author: { id: '1', name: 'Олександр Коваль', bio_uk: 'Експерт з AI та автоматизації', bio_en: 'AI & Automation Expert', avatar_url: null, position_uk: 'Головний редактор', position_en: 'Chief Editor', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
             featured_image_url: '/images/blog/automation-tools.jpg',
@@ -145,9 +145,9 @@ const BlogIndex: React.FC = () => {
       console.error('Error loading blog data:', error)
       // Якщо виникла помилка, все одно використовуємо мокові дані
       setCategories([
-        { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#3B82F6', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-        { id: '2', name_uk: 'SEO маркетинг', name_en: 'SEO Marketing', slug: 'seo-marketing', color: '#10B981', sort_order: 2, description_uk: 'Поради з пошукової оптимізації та цифрового маркетингу', description_en: 'SEO and digital marketing tips', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-        { id: '3', name_uk: 'Digital трансформація', name_en: 'Digital Transformation', slug: 'digital-transformation', color: '#F59E0B', sort_order: 3, description_uk: 'Цифрова трансформація бізнесу', description_en: 'Business digital transformation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
+        { id: '1', name_uk: 'AI та автоматизація', name_en: 'AI & Automation', slug: 'ai-automation', color: '#134E5E', sort_order: 1, description_uk: 'Статті про штучний інтелект та автоматизацію бізнесу', description_en: 'Articles about artificial intelligence and business automation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+        { id: '2', name_uk: 'SEO маркетинг', name_en: 'SEO Marketing', slug: 'seo-marketing', color: '#0b6e74', sort_order: 2, description_uk: 'Поради з пошукової оптимізації та цифрового маркетингу', description_en: 'SEO and digital marketing tips', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+        { id: '3', name_uk: 'Digital трансформація', name_en: 'Digital Transformation', slug: 'digital-transformation', color: '#0f8f98', sort_order: 3, description_uk: 'Цифрова трансформація бізнесу', description_en: 'Business digital transformation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
       ])
       setPosts([
         {
@@ -213,36 +213,36 @@ const BlogIndex: React.FC = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-deep-teal-600"></div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 font-inter">
       {/* Хедер з навігацією */}
       <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+              <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-deep-teal-600 transition-colors font-sf-pro-display">
                 BlackSea Digital
               </Link>
             </div>
             <nav className="hidden md:flex space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              <Link to="/" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
                 Головна
               </Link>
-              <Link to="/blog" className="text-blue-600 font-medium border-b-2 border-blue-600 pb-1">
+              <Link to="/blog" className="text-deep-teal-600 font-medium border-b-2 border-deep-teal-600 pb-1">
                 Блог
               </Link>
-              <Link to="/services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              <Link to="/services" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
                 Послуги
               </Link>
-              <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              <Link to="/about" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
                 Про нас
               </Link>
-              <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              <Link to="/contact" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
                 Контакти
               </Link>
             </nav>
@@ -251,13 +251,13 @@ const BlogIndex: React.FC = () => {
       </header>
 
       {/* Hero секція */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <div className="hero-gradient text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Блог про AI, автоматизацію та digital продукти
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-sf-pro-display">
+              BlackSea Blog
             </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
               Актуальні статті, гайди та кейси для українського бізнесу. 
               Дізнавайтесь першими про нові технології та можливості автоматизації.
             </p>
@@ -266,6 +266,16 @@ const BlogIndex: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Кнопка повернення */}
+        <div className="mb-8">
+          <Link 
+            to="/" 
+            className="inline-flex items-center px-4 py-2 bg-deep-teal-600 text-white rounded-lg hover:bg-deep-teal-700 transition-colors font-medium"
+          >
+            ← Повернутися на головну
+          </Link>
+        </div>
+
         {/* Пошук та фільтри */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row gap-4 mb-6">
@@ -275,14 +285,14 @@ const BlogIndex: React.FC = () => {
                 placeholder="Пошук по статтях..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-teal-500 focus:border-transparent"
               />
             </div>
             <div className="md:w-64">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-teal-500 focus:border-transparent"
               >
                 <option value="">Всі категорії</option>
                 {categories.map(category => (
@@ -300,7 +310,7 @@ const BlogIndex: React.FC = () => {
               onClick={() => setSelectedCategory('')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 !selectedCategory 
-                  ? 'bg-blue-600 text-white' 
+                  ? 'bg-deep-teal-600 text-white' 
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
               }`}
             >
@@ -312,7 +322,7 @@ const BlogIndex: React.FC = () => {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   selectedCategory === category.id 
-                    ? 'bg-blue-600 text-white' 
+                    ? 'bg-deep-teal-600 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
                 }`}
               >
@@ -338,7 +348,7 @@ const BlogIndex: React.FC = () => {
               
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">
+                  <span className="inline-block bg-deep-teal-100 text-deep-teal-800 text-xs px-2 py-1 rounded-full font-medium">
                     {post.category?.name_uk}
                   </span>
                   <span className="text-gray-500 text-sm">
@@ -347,7 +357,7 @@ const BlogIndex: React.FC = () => {
                 </div>
                 
                 <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
-                  <Link to={`/blog/${post.slug}`} className="hover:text-blue-600">
+                  <Link to={`/blog/${post.slug}`} className="hover:text-deep-teal-600">
                     {post.title_uk}
                   </Link>
                 </h2>
@@ -377,7 +387,7 @@ const BlogIndex: React.FC = () => {
                   
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                    className="text-deep-teal-600 hover:text-deep-teal-800 font-medium text-sm"
                   >
                     Читати далі →
                   </Link>
