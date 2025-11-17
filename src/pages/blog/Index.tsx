@@ -221,12 +221,12 @@ const BlogIndex: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-inter">
       {/* Хедер з навігацією */}
-      <header className="bg-white shadow-sm sticky top-0 z-10">
+      <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-deep-teal-600 transition-colors font-sf-pro-display">
-                BlackSea Digital
+              <Link to="/" className="text-2xl font-semibold text-gray-900 hover:text-deep-teal-600 transition-colors" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
+                BlackSea 
               </Link>
             </div>
             <nav className="hidden md:flex space-x-8">
@@ -251,13 +251,13 @@ const BlogIndex: React.FC = () => {
       </header>
 
       {/* Hero секція */}
-      <div className="hero-gradient text-white py-20">
+      <div className="bg-hero-teal text-white py-20 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 font-sf-pro-display">
-              BlackSea Blog
+              BlackSea
             </h1>
-            <p className="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Актуальні статті, гайди та кейси для українського бізнесу. 
               Дізнавайтесь першими про нові технології та можливості автоматизації.
             </p>
@@ -270,7 +270,7 @@ const BlogIndex: React.FC = () => {
         <div className="mb-8">
           <Link 
             to="/" 
-            className="inline-flex items-center px-4 py-2 bg-deep-teal-600 text-white rounded-lg hover:bg-deep-teal-700 transition-colors font-medium"
+            className="inline-flex items-center px-4 py-2 bg-deep-teal-600 text-white rounded-lg hover:bg-deep-teal-700 transition-colors font-medium shadow-md"
           >
             ← Повернутися на головну
           </Link>

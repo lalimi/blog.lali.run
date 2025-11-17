@@ -101,7 +101,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link to="/" className="text-xl font-bold text-gray-900">
+                <Link to="/" className="text-xl font-semibold text-gray-900" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
                   BlackSea Digital
                 </Link>
               </div>
@@ -142,7 +142,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
-                <h3 className="text-lg font-semibold mb-4">BlackSea Digital</h3>
+                <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>BlackSea Digital</h3>
                 <p className="text-gray-400">
                   Допомагаємо українському бізнесу впроваджувати сучасні технології та автоматизацію.
                 </p>

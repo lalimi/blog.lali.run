@@ -8,7 +8,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-display font-bold text-white">BlackSea</h1>
+              <h1 className="text-2xl font-semibold text-white" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>BlackSea</h1>
             </div>
             <nav className="hidden md:flex space-x-8">
               <Link to="/blog" className="text-blue-100 hover:text-white font-medium transition-colors">
@@ -355,7 +355,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-blue-200 hover:text-white transition-colors font-body"
               >
-                <span className="text-lg font-semibold font-display">BlackSea</span>
+                <span className="text-lg font-semibold" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>BlackSea</span>
                 <br />
                 <span className="text-sm">blacksea.click</span>
               </a>
