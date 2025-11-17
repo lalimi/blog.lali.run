@@ -1,0 +1,10 @@
+<!-- SVG placeholder для тестування -->
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f0fdf4"/>
+  <text x="400" y="200" font-family="Arial, sans-serif" font-size="24" fill="#16a34a" text-anchor="middle" dominant-baseline="middle">
+    Інструменти автоматизації
+  </text>
+  <text x="400" y="230" font-family="Arial, sans-serif" font-size="16" fill="#22c55e" text-anchor="middle" dominant-baseline="middle">
+    TOP-10 для українського бізнесу
+  </text>
+</svg>

@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Блокуємо адмін панель
+Disallow: /admin
+Disallow: /api/admin
+
+# Блокуємо системні файли
+Disallow: /api/auth
+Disallow: /api/storage
+Disallow: /_next
+Disallow: /node_modules
+Disallow: /src
+
+# Дозволяємо важливі файли
+Allow: /api/blog/posts
+Allow: /api/blog/categories
+Allow: /api/blog/tags
+
+# Sitemap
+Sitemap: https://blacksea-blog.com/sitemap.xml
+
+# Crawl-delay для українських пошукових систем
+User-agent: Yandex
+Crawl-delay: 1
+
+User-agent: Googlebot
+Crawl-delay: 0.5
