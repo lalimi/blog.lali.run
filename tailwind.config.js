@@ -17,6 +17,16 @@ export default {
           dark: '#04161a',
           muted: '#2a4d63'
         },
+        'teal-gradient': {
+          'from-support': '#0b6e74',
+          'to-light': '#0f8f98',
+          'from-accent': '#134E5E',
+          'to-primary': '#0B3037',
+          'from-muted': '#2a4d63',
+          'to-support': '#0b6e74',
+          'from-primary': '#0B3037',
+          'to-dark': '#04161a'
+        },
         'brand-bg': '#F5F7F8',
         'brand-text': '#111827'
       },

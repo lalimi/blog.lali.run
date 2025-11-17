@@ -30,10 +30,10 @@ export default function Home() {
 
       {/* Герой секція */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-hero-teal rounded-3xl p-12 md:p-20 text-center mb-20">
+        <div className="bg-gradient-to-r from-deep-teal-primary via-deep-teal-accent to-deep-teal-muted rounded-3xl p-12 md:p-20 text-center mb-20">
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">
-              Лаліта
+              Лаліта Мірошниченко
             </h1>
             <h2 className="text-2xl md:text-3xl font-display font-semibold text-blue-200 mb-8">
               Фаундерка BlackSea
@@ -259,12 +259,12 @@ export default function Home() {
         </div>
 
         {/* CTA секція */}
-        <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white">
+        <div className="mt-20 bg-gradient-to-r from-deep-teal-primary via-deep-teal-accent to-deep-teal-muted rounded-2xl p-8 md:p-12 text-white">
           <div className="text-center max-w-3xl mx-auto">
-            <h3 className="text-3xl font-bold mb-6">
+            <h3 className="text-3xl font-display font-bold mb-6">
               Я веду свій шлях публічно
             </h3>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-xl mb-8 opacity-90 font-body">
               Якщо хочеш стежити за тим, як створюється BlackSea — підписуйся
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -272,10 +272,13 @@ export default function Home() {
                 href="https://www.threads.net/@lali.mi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-gradient-from-support to-teal-gradient-to-light text-white font-semibold rounded-large hover:from-teal-gradient-to-light hover:to-teal-gradient-from-accent transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                Threads: @lali.mi
-                <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <span className="text-center">
+                  <div className="font-medium">Threads</div>
+                  <div className="text-sm opacity-90">@lali.mi</div>
+                </span>
+                <svg className="ml-3 w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M11 3a1 1 0 100 2h2.586l-4.293 4.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
                   <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
                 </svg>
@@ -284,10 +287,13 @@ export default function Home() {
                 href="https://t.me/lalimi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-400 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-gradient-from-accent to-teal-gradient-to-primary text-white font-semibold rounded-large hover:from-teal-gradient-to-primary hover:to-teal-gradient-from-dark transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                Telegram: @lalimi
-                <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <span className="text-center">
+                  <div className="font-medium">Telegram</div>
+                  <div className="text-sm opacity-90">@lalimi</div>
+                </span>
+                <svg className="ml-3 w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M11 3a1 1 0 100 2h2.586l-4.293 4.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
                   <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
                 </svg>
@@ -296,10 +302,13 @@ export default function Home() {
                 href="https://blacksea.click"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-400 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-gradient-from-muted to-teal-gradient-to-support text-white font-semibold rounded-large hover:from-teal-gradient-to-support hover:to-teal-gradient-from-light transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                Стати раннім креатором BlackSea
-                <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <span className="text-center">
+                  <div className="font-medium">Стати раннім креатором</div>
+                  <div className="text-sm opacity-90">BlackSea</div>
+                </span>
+                <svg className="ml-3 w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M11 3a1 1 0 100 2h2.586l-4.293 4.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
                   <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
                 </svg>

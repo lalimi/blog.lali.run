@@ -1,28 +1,15 @@
 User-agent: *
 Allow: /
 
-# Блокуємо адмін панель
+# Основні сторінки
 Disallow: /admin
-Disallow: /api/admin
+Disallow: /api
 
-# Блокуємо системні файли
-Disallow: /api/auth
-Disallow: /api/storage
-Disallow: /_next
-Disallow: /node_modules
-Disallow: /src
+# Статичні ресурси
+Allow: /assets
+Allow: /images
+Allow: /css
+Allow: /js
 
-# Дозволяємо важливі файли
-Allow: /api/blog/posts
-Allow: /api/blog/categories
-Allow: /api/blog/tags
-
-# Sitemap
-Sitemap: https://blacksea-blog.com/sitemap.xml
-
-# Crawl-delay для українських пошукових систем
-User-agent: Yandex
-Crawl-delay: 1
-
-User-agent: Googlebot
-Crawl-delay: 0.5
+# Сайтмап
+Sitemap: https://www.lali.run/sitemap.xml

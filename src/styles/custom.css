@@ -15,6 +15,43 @@
   filter: saturate(1.05) brightness(1.05);
 }
 
+/* Градієнтні кнопки CTA */
+.from-deep-teal-support {
+  --tw-gradient-from: #0b6e74;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(11, 110, 116, 0));
+}
+
+.to-deep-teal-light {
+  --tw-gradient-to: #0f8f98;
+}
+
+.from-deep-teal-accent {
+  --tw-gradient-from: #134E5E;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(19, 78, 94, 0));
+}
+
+.to-deep-teal-primary {
+  --tw-gradient-to: #0B3037;
+}
+
+.from-deep-teal-muted {
+  --tw-gradient-from: #2a4d63;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(42, 77, 99, 0));
+}
+
+.to-deep-teal-support {
+  --tw-gradient-to: #0b6e74;
+}
+
+.from-deep-teal-primary {
+  --tw-gradient-from: #0B3037;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(11, 48, 55, 0));
+}
+
+.to-deep-teal-dark {
+  --tw-gradient-to: #04161a;
+}
+
 /* Налаштування шрифтів */
 .font-display {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
