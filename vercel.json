@@ -5,9 +5,6 @@
   "functions": {
     "api/index.js": {
       "runtime": "nodejs18.x"
-    },
-    "api/[...all].js": {
-      "runtime": "nodejs18.x"
     }
   },
   "headers": [
@@ -32,7 +29,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "destination": "/api/index.js"
     },
     {
       "source": "/(.*)",
