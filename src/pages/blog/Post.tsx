@@ -27,7 +27,7 @@ const BlogPost: React.FC = () => {
       setError(null)
 
       // Завантажити статтю
-      const response = await fetch(`/blog/posts/${slug}`)
+      const response = await fetch(`/api/blog/posts/${slug}`)
       if (!response.ok) {
         throw new Error('Статтю не знайдено')
       }
@@ -36,7 +36,7 @@ const BlogPost: React.FC = () => {
       setPost(postData)
 
       // Завантажити схожі статті
-      const relatedResponse = await fetch(`/blog/posts/${slug}/related?limit=3`)
+      const relatedResponse = await fetch(`/api/blog/posts/${slug}/related?limit=3`)
       if (relatedResponse.ok) {
         const relatedData = await relatedResponse.json()
         setRelatedPosts(relatedData)
@@ -123,7 +123,7 @@ const BlogPost: React.FC = () => {
 
       <article className="max-w-4xl mx-auto">
         {/* Навігаційний ланцюжок */}
-        <Breadcrumb 
+        <Breadcrumb
           items={[
             { label: 'Головна', href: '/' },
             { label: 'Блог', href: '/blog' },
@@ -182,7 +182,7 @@ const BlogPost: React.FC = () => {
                 </svg>
                 {getReadingTime(post.content_uk || '')} хв
               </span>
-              
+
               <span className="flex items-center gap-1">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -233,7 +233,7 @@ const BlogPost: React.FC = () => {
           )}
 
           {/* Основний контент */}
-          <div 
+          <div
             className="prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
                        prose-p:text-gray-700 prose-p:leading-relaxed
                        prose-ul:list-disc prose-ol:list-decimal

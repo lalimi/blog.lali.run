@@ -19,26 +19,17 @@ const BlogIndex: React.FC = () => {
   const loadData = async () => {
     try {
       setLoading(true)
-      
-      // Спробуємо завантажити з Supabase
-      const { data: categoriesData } = await supabase
-        .from('blog_categories')
-        .select('*')
-        .eq('published', true)
-        .order('name_uk')
 
-      const { data: postsData } = await supabase
-        .from('blog_posts')
-        .select(`
-          *,
-          category:blog_categories(*),
-          author:blog_authors(*)
-        `)
-        .eq('published', true)
-        .order('published_at', { ascending: false })
-        .limit(10)
+      // Завантажити категорії через API
+      const categoriesResponse = await fetch('/api/blog/categories')
+      const categoriesData = await categoriesResponse.json()
 
-      // Якщо немає даних з Supabase, використовуємо мокові дані
+      // Завантажити пости через API
+      const postsResponse = await fetch('/api/blog/posts?limit=10')
+      const postsResult = await postsResponse.json()
+      const postsData = postsResult.posts || []
+
+      // Якщо немає даних з API, використовуємо мокові дані
       if (!postsData || postsData.length === 0) {
         console.log('Використовуємо мокові дані для локального тестування')
         setCategories([
@@ -46,7 +37,7 @@ const BlogIndex: React.FC = () => {
           { id: '2', name_uk: 'SEO маркетинг', name_en: 'SEO Marketing', slug: 'seo-marketing', color: '#0b6e74', sort_order: 2, description_uk: 'Поради з пошукової оптимізації та цифрового маркетингу', description_en: 'SEO and digital marketing tips', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
           { id: '3', name_uk: 'Digital трансформація', name_en: 'Digital Transformation', slug: 'digital-transformation', color: '#0f8f98', sort_order: 3, description_uk: 'Цифрова трансформація бізнесу', description_en: 'Business digital transformation', published: true, created_at: new Date().toISOString(), updated_at: new Date().toISOString() }
         ])
-        
+
         setPosts([
           {
             id: '1',
@@ -190,11 +181,11 @@ const BlogIndex: React.FC = () => {
 
   const filteredPosts = posts.filter(post => {
     const matchesCategory = !selectedCategory || post.category_id === selectedCategory
-    const matchesSearch = !searchTerm || 
+    const matchesSearch = !searchTerm ||
       post.title_uk.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.title_en?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.excerpt_uk?.toLowerCase().includes(searchTerm.toLowerCase())
-    
+
     return matchesCategory && matchesSearch
   })
 
@@ -232,7 +223,7 @@ const BlogIndex: React.FC = () => {
               BlackSea
             </h1>
             <p className="text-sm sm:text-base md:text-xl text-deep-teal-primary/90 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-1">
-              Актуальні статті, гайди та кейси для українського бізнесу. 
+              Актуальні статті, гайди та кейси для українського бізнесу.
               Дізнавайтесь першими про нові технології та можливості автоматизації.
             </p>
           </div>
@@ -242,8 +233,8 @@ const BlogIndex: React.FC = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-12">
         {/* Кнопка повернення */}
         <div className="mb-8">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="inline-flex items-center px-3 py-2 md:px-4 md:py-2 bg-deep-teal-600 text-white rounded-lg hover:bg-deep-teal-700 transition-colors font-medium shadow-md text-sm md:text-base"
           >
             ← Повернутися на головну
@@ -282,11 +273,10 @@ const BlogIndex: React.FC = () => {
           <div className="flex flex-wrap gap-1.5 md:gap-2">
             <button
               onClick={() => setSelectedCategory('')}
-              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${
-                !selectedCategory 
-                  ? 'bg-deep-teal-600 text-white' 
+              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${!selectedCategory
+                  ? 'bg-deep-teal-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
-              }`}
+                }`}
             >
               Всі категорії
             </button>
@@ -294,11 +284,10 @@ const BlogIndex: React.FC = () => {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${
-                  selectedCategory === category.id 
-                    ? 'bg-deep-teal-600 text-white' 
+                className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${selectedCategory === category.id
+                    ? 'bg-deep-teal-600 text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
-                }`}
+                  }`}
               >
                 {category.name_uk}
               </button>
@@ -319,7 +308,7 @@ const BlogIndex: React.FC = () => {
                   />
                 </div>
               )}
-              
+
               <div className="p-4 md:p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="inline-block bg-deep-teal-100 text-deep-teal-800 text-xs px-2 py-1 rounded-full font-medium">
@@ -329,17 +318,17 @@ const BlogIndex: React.FC = () => {
                     {getReadingTime(post.content_uk || '')} хв читання
                   </span>
                 </div>
-                
+
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                   <Link to={`/blog/${post.slug}`} className="hover:text-deep-teal-600">
                     {post.title_uk}
                   </Link>
                 </h2>
-                
+
                 <p className="text-gray-600 mb-4 text-sm md:text-base line-clamp-3">
                   {post.excerpt_uk}
                 </p>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     {post.author?.avatar_url && (
@@ -358,7 +347,7 @@ const BlogIndex: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   <Link
                     to={`/blog/${post.slug}`}
                     className="text-deep-teal-600 hover:text-deep-teal-800 font-medium text-xs md:text-sm"
@@ -378,7 +367,7 @@ const BlogIndex: React.FC = () => {
           </div>
         )}
       </div>
-      
+
       <Footer />
     </div>
   )

@@ -17,7 +17,7 @@ app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 
 app.use('/auth', authRoutes)
-app.use('/blog', blogRoutes)
+app.use('/api/blog', blogRoutes)
 app.use('/admin/blog', adminBlogRoutes)
 app.use('/upload', uploadRoutes)
 
