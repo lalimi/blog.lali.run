@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
 
 export default function Services() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -12,20 +13,6 @@ export default function Services() {
       features: ["Технічний аудит", "Ключові слова", "Контент стратегія", "Лінкбілдинг"],
       price: "від 15 000 грн/міс",
       icon: "🔍"
-    },
-    {
-      title: "AI Автоматизація",
-      description: "Впровадження штучного інтелекту для автоматизації бізнес-процесів та підвищення ефективності.",
-      features: ["Чат-боти", "Автоматизація процесів", "Аналіз даних", "Персоналізація"],
-      price: "від 25 000 грн",
-      icon: "🤖"
-    },
-    {
-      title: "Digital Стратегія",
-      description: "Розробка комплексної цифрової стратегії для вашого бізнесу з урахуванням особливостей українського ринку.",
-      features: ["Аналіз ринку", "Конкурентна розвідка", "Стратегія просування", "Метрики успіху"],
-      price: "від 10 000 грн",
-      icon: "📊"
     },
     {
       title: "Контент Маркетинг",
@@ -52,97 +39,16 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-inter">
-      {/* Хедер */}
-      <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link to="/" className="text-xl md:text-2xl font-semibold text-gray-900 hover:text-deep-teal-600 transition-colors" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
-                BlackSea
-              </Link>
-            </div>
-            
-            {/* Десктоп навігація */}
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
-                Головна
-              </Link>
-              <Link to="/blog" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
-                Блог
-              </Link>
-              <Link to="/services" className="text-deep-teal-600 font-medium border-b-2 border-deep-teal-600 pb-1">
-                Послуги
-              </Link>
-              <Link to="/about" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
-                Про нас
-              </Link>
-              <Link to="/contact" className="text-gray-700 hover:text-deep-teal-600 font-medium transition-colors">
-                Контакти
-              </Link>
-            </nav>
-            
-            {/* Мобільне меню кнопка */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-deep-teal-600 hover:bg-gray-100 transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-        
-        {/* Мобільне меню */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <div className="px-4 py-2 space-y-1">
-              <Link
-                to="/"
-                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Головна
-              </Link>
-              <Link
-                to="/blog"
-                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Блог
-              </Link>
-              <Link
-                to="/services"
-                className="block px-3 py-2 text-deep-teal-600 bg-deep-teal-50 font-medium rounded-md transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Послуги
-              </Link>
-              <Link
-                to="/about"
-                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Про нас
-              </Link>
-              <Link
-                to="/contact"
-                className="block px-3 py-2 text-gray-700 hover:text-deep-teal-600 hover:bg-gray-50 rounded-md transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Контакти
-              </Link>
-            </div>
-          </div>
-        )}
-      </header>
+      <Header />
 
       {/* Hero секція */}
-      <div className="bg-hero-teal text-white py-12 md:py-20 mt-16">
+      <div className="bg-hero-teal py-12 md:py-20 mt-16">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 text-deep-teal-primary" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
               Наші Послуги
             </h1>
-            <p className="text-sm sm:text-base md:text-xl text-gray-200 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-1">
+            <p className="text-sm sm:text-base md:text-xl text-deep-teal-primary/90 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-1">
               Комплексні digital-рішення для українського бізнесу. Підвищуємо ефективність через сучасні технології.
             </p>
           </div>
@@ -176,9 +82,9 @@ export default function Services() {
         </div>
 
         {/* CTA секція */}
-        <div className="bg-gradient-to-r from-deep-teal-primary to-deep-teal-accent rounded-2xl p-8 text-center text-white">
+        <div className="bg-gradient-to-r from-[#0E2931] to-[#12484C] rounded-2xl p-8 text-center text-[#E2E2E0]">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Готові розпочати?</h2>
-          <p className="text-lg mb-6 max-w-2xl mx-auto">
+          <p className="text-lg mb-6 max-w-2xl mx-auto text-[#E2E2E0]">
             Зв'яжіться з нами для безкоштовної консультації. Ми допоможемо обрати оптимальне рішення для вашого бізнесу.
           </p>
           <Link
@@ -189,6 +95,8 @@ export default function Services() {
           </Link>
         </div>
       </div>
+      
+      <Footer />
     </div>
   )
 }

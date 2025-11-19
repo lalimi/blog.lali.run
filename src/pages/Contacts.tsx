@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, MapPin, Phone, Mail, Clock, Send } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react'
+import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
 
 export default function Contacts() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -35,69 +37,7 @@ export default function Contacts() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <span className="text-2xl font-semibold" style={{ fontFamily: 'Unbounded, sans-serif', fontWeight: 600 }}>
-                BlackSea
-              </span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Головна
-              </Link>
-              <Link to="/services" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Послуги
-              </Link>
-              <Link to="/about" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Про нас
-              </Link>
-              <Link to="/blog" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Блог
-              </Link>
-              <Link to="/contacts" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Контакти
-              </Link>
-            </nav>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-gray-900"
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200">
-              <nav className="flex flex-col space-y-4">
-                <Link to="/" className="text-gray-700 hover:text-gray-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                  Головна
-                </Link>
-                <Link to="/services" className="text-gray-700 hover:text-gray-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                  Послуги
-                </Link>
-                <Link to="/about" className="text-gray-700 hover:text-gray-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                  Про Нас
-                </Link>
-                <Link to="/blog" className="text-gray-700 hover:text-gray-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                  Блог
-                </Link>
-                <Link to="/contacts" className="text-gray-700 hover:text-gray-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                  Контакти
-                </Link>
-              </nav>
-            </div>
-          )}
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="bg-hero-teal py-20">
@@ -331,58 +271,7 @@ export default function Contacts() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: 'Unbounded, sans-serif' }}>
-                BlackSea
-              </h3>
-              <p className="text-gray-400">
-                Розробка веб-сайтів та цифрових рішень для вашого бізнесу.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Посилання</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link to="/" className="hover:text-white transition-colors">Головна</Link></li>
-                <li><Link to="/services" className="hover:text-white transition-colors">Послуги</Link></li>
-                <li><Link to="/about" className="hover:text-white transition-colors">Про нас</Link></li>
-                <li><Link to="/blog" className="hover:text-white transition-colors">Блог</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Контакти</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>м. Одеса, вул. Дерибасівська 15</li>
-                <li>+380 (67) 123-45-67</li>
-                <li>info@blacksea.ua</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Соціальні мережі</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">Facebook</span>
-                  FB
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">Telegram</span>
-                  TG
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">YouTube</span>
-                  YT
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 BlackSea. Всі права захищені.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

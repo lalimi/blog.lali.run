@@ -27,7 +27,7 @@ const BlogPost: React.FC = () => {
       setError(null)
 
       // Завантажити статтю
-      const response = await fetch(`/api/blog/posts/${slug}`)
+      const response = await fetch(`/blog/posts/${slug}`)
       if (!response.ok) {
         throw new Error('Статтю не знайдено')
       }
@@ -36,7 +36,7 @@ const BlogPost: React.FC = () => {
       setPost(postData)
 
       // Завантажити схожі статті
-      const relatedResponse = await fetch(`/api/blog/posts/${slug}/related?limit=3`)
+      const relatedResponse = await fetch(`/blog/posts/${slug}/related?limit=3`)
       if (relatedResponse.ok) {
         const relatedData = await relatedResponse.json()
         setRelatedPosts(relatedData)

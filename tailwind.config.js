@@ -32,10 +32,11 @@ export default {
       },
       fontFamily: {
         'display': ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Inter', '"Helvetica Neue"', 'Arial', 'sans-serif'],
-        'body': ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif']
+        'body': ['Tinos', 'Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif']
       },
       borderRadius: {
-        'large': '14px'
+        'large': '14px',
+        'full': '9999px'
       },
       backgroundImage: {
         'hero-teal': 'radial-gradient(1200px circle at 70% 10%, #134E5E 0%, rgba(19,78,94,0.6) 35%, rgba(11,48,55,0.8) 60%, #0B3037 100%)'

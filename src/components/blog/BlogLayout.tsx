@@ -123,7 +123,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
                 </Link>
                 <Link 
                   to="/admin/blog" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium"
+                  className="bg-gradient-to-r from-[#0E2931] to-[#12484C] text-[#E2E2E0] px-4 py-2 rounded-lg hover:from-[#12484C] hover:to-[#2B7574] transition-all duration-200 font-medium"
                 >
                   Адмін
                 </Link>
@@ -173,7 +173,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
               </div>
             </div>
             <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 BlackSea Digital. Всі права захищені.</p>
+              <p>&copy; 2025 BlackSea. Всі права захищені.</p>
             </div>
           </div>
         </footer>

@@ -37,12 +37,12 @@ const CTABlock: React.FC<CTABlockProps> = ({
   const currentVariant = variants[variant]
 
   return (
-    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 my-8">
+    <div className="bg-gradient-to-r from-[#E2E2E0] to-[#2B7574] rounded-lg p-8 my-8">
       <div className="text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        <h3 className="text-2xl font-bold text-[#0E2931] mb-4">
           {title}
         </h3>
-        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+        <p className="text-[#0E2931] mb-6 max-w-2xl mx-auto">
           {description}
         </p>
         <Link
