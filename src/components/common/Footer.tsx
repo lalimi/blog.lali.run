@@ -2,9 +2,14 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-br from-deep-teal-900 via-deep-teal-800 to-deep-teal-950 text-white mt-12 md:mt-20 overflow-hidden">
+    <footer
+      className="relative text-white mt-12 md:mt-20 overflow-hidden"
+      style={{
+        background: 'linear-gradient(to bottom right, #04161a, #0B3037, #020B0D)'
+      }}
+    >
       {/* Decorative gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-radial from-deep-teal-bright/5 via-transparent to-transparent opacity-30" />
+      <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at center, rgba(78, 205, 196, 0.05), transparent)' }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="text-center">
