@@ -23,6 +23,120 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({ success: true, message: 'ok' });
     }
 
+    // ============ PUBLIC BLOG ROUTES ============
+
+    // Get categories
+    if (url === '/api/blog/categories' && req.method === 'GET') {
+      const supabase = createClient(
+        process.env.VITE_SUPABASE_URL,
+        process.env.SUPABASE_SERVICE_ROLE_KEY
+      );
+
+      const { data, error } = await supabase
+        .from('blog_categories')
+        .select('*')
+        .eq('published', true)
+        .order('sort_order', { ascending: true });
+
+      if (error) throw error;
+      return res.status(200).json(data);
+    }
+
+    // Get posts list
+    if (url.startsWith('/api/blog/posts') && req.method === 'GET' && !url.includes('/related')) {
+      const supabase = createClient(
+        process.env.VITE_SUPABASE_URL,
+        process.env.SUPABASE_SERVICE_ROLE_KEY
+      );
+
+      // Parse query parameters
+      const urlObj = new URL(url, `http://${req.headers.host}`);
+      const limit = parseInt(urlObj.searchParams.get('limit') || '10');
+      const category = urlObj.searchParams.get('category');
+
+      let query = supabase
+        .from('blog_posts')
+        .select(`
+          *,
+          category:blog_categories(*),
+          author:blog_authors(*)
+        `)
+        .eq('published', true)
+        .order('published_at', { ascending: false })
+        .limit(limit);
+
+      if (category) {
+        query = query.eq('category_id', category);
+      }
+
+      const { data, error } = await query;
+
+      if (error) throw error;
+      return res.status(200).json({ posts: data });
+    }
+
+    // Get single post by slug
+    if (url.match(/^\/api\/blog\/posts\/[^\/]+$/) && req.method === 'GET') {
+      const slug = url.split('/').pop();
+      const supabase = createClient(
+        process.env.VITE_SUPABASE_URL,
+        process.env.SUPABASE_SERVICE_ROLE_KEY
+      );
+
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select(`
+          *,
+          category:blog_categories(*),
+          author:blog_authors(*)
+        `)
+        .eq('slug', slug)
+        .eq('published', true)
+        .single();
+
+      if (error) throw error;
+      return res.status(200).json(data);
+    }
+
+    // Get related posts
+    if (url.match(/^\/api\/blog\/posts\/[^\/]+\/related/) && req.method === 'GET') {
+      const slug = url.split('/')[4];
+      const supabase = createClient(
+        process.env.VITE_SUPABASE_URL,
+        process.env.SUPABASE_SERVICE_ROLE_KEY
+      );
+
+      // Get current post to find its category
+      const { data: currentPost } = await supabase
+        .from('blog_posts')
+        .select('category_id')
+        .eq('slug', slug)
+        .single();
+
+      if (!currentPost) {
+        return res.status(200).json([]);
+      }
+
+      // Get related posts from same category
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select(`
+          *,
+          category:blog_categories(*),
+          author:blog_authors(*)
+        `)
+        .eq('category_id', currentPost.category_id)
+        .eq('published', true)
+        .neq('slug', slug)
+        .order('published_at', { ascending: false })
+        .limit(3);
+
+      if (error) throw error;
+      return res.status(200).json(data || []);
+    }
+
+    // ============ ADMIN ROUTES ============
+
     // Створення поста
     if (url === '/api/admin/blog/posts' && req.method === 'POST') {
       const supabase = createClient(
@@ -95,12 +209,12 @@ module.exports = async function handler(req, res) {
 
       // Визначаємо що саме оновлюємо
       if (url.endsWith('/publish')) {
-        updateData = { 
+        updateData = {
           published: true,
           published_at: new Date().toISOString()
         };
       } else if (url.endsWith('/unpublish')) {
-        updateData = { 
+        updateData = {
           published: false,
           published_at: null
         };
