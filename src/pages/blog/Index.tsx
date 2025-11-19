@@ -274,8 +274,8 @@ const BlogIndex: React.FC = () => {
             <button
               onClick={() => setSelectedCategory('')}
               className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${!selectedCategory
-                  ? 'bg-deep-teal-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
+                ? 'bg-deep-teal-600 text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
                 }`}
             >
               Всі категорії
@@ -285,8 +285,8 @@ const BlogIndex: React.FC = () => {
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${selectedCategory === category.id
-                    ? 'bg-deep-teal-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
+                  ? 'bg-deep-teal-600 text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
                   }`}
               >
                 {category.name_uk}
@@ -297,49 +297,67 @@ const BlogIndex: React.FC = () => {
 
         {/* Статті */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-          {filteredPosts.map(post => (
-            <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          {filteredPosts.map((post, index) => (
+            <article
+              key={post.id}
+              className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-2 animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               {post.featured_image_url && (
-                <div className="aspect-w-16 aspect-h-9">
+                <div className="relative aspect-w-16 aspect-h-9 overflow-hidden">
                   <img
                     src={post.featured_image_url}
                     alt={post.title_uk}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-teal-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Category badge on image */}
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-block bg-gradient-teal backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg">
+                      {post.category?.name_uk}
+                    </span>
+                  </div>
                 </div>
               )}
 
-              <div className="p-4 md:p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="inline-block bg-deep-teal-100 text-deep-teal-800 text-xs px-2 py-1 rounded-full font-medium">
-                    {post.category?.name_uk}
-                  </span>
-                  <span className="text-gray-500 text-xs md:text-sm">
-                    {getReadingTime(post.content_uk || '')} хв читання
+              <div className="p-6 md:p-8">
+                <div className="flex items-center justify-between mb-3">
+                  {!post.featured_image_url && (
+                    <span className="inline-block bg-gradient-teal text-white text-xs px-3 py-1.5 rounded-full font-medium">
+                      {post.category?.name_uk}
+                    </span>
+                  )}
+                  <span className="text-gray-500 text-sm flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {getReadingTime(post.content_uk || '')} хв
                   </span>
                 </div>
 
-                <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2">
-                  <Link to={`/blog/${post.slug}`} className="hover:text-deep-teal-600">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-deep-teal-700 transition-colors duration-300">
+                  <Link to={`/blog/${post.slug}`}>
                     {post.title_uk}
                   </Link>
                 </h2>
 
-                <p className="text-gray-600 mb-4 text-sm md:text-base line-clamp-3">
+                <p className="text-gray-600 mb-6 text-base line-clamp-3 leading-relaxed">
                   {post.excerpt_uk}
                 </p>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex items-center space-x-3">
                     {post.author?.avatar_url && (
                       <img
                         src={post.author.avatar_url}
                         alt={post.author.name}
-                        className="w-6 h-6 md:w-8 md:h-8 rounded-full"
+                        className="w-10 h-10 rounded-full ring-2 ring-deep-teal-100"
                       />
                     )}
                     <div>
-                      <p className="text-xs md:text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium text-gray-900">
                         {post.author?.name}
                       </p>
                       <p className="text-xs text-gray-500">
@@ -350,9 +368,12 @@ const BlogIndex: React.FC = () => {
 
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="text-deep-teal-600 hover:text-deep-teal-800 font-medium text-xs md:text-sm"
+                    className="inline-flex items-center gap-2 text-deep-teal-600 hover:text-deep-teal-800 font-medium text-sm group/link"
                   >
-                    Читати далі →
+                    <span>Читати</span>
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
               </div>
