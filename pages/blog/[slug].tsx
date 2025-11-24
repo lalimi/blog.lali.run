@@ -35,7 +35,7 @@ interface TableOfContentsItem {
 const BlogPostPage = () => {
   const router = useRouter();
   const { slug } = router.query;
-  
+
   const [readingProgress, setReadingProgress] = useState(0);
   const [activeSection, setActiveSection] = useState<string>('');
 
@@ -220,7 +220,7 @@ const BlogPostPage = () => {
       // Update active section in TOC
       const headings = tableOfContents.map(item => document.getElementById(item.id));
       let currentSection = '';
-      
+
       for (let i = headings.length - 1; i >= 0; i--) {
         const heading = headings[i];
         if (heading && heading.getBoundingClientRect().top <= 100) {
@@ -228,7 +228,7 @@ const BlogPostPage = () => {
           break;
         }
       }
-      
+
       setActiveSection(currentSection);
     };
 
@@ -240,7 +240,7 @@ const BlogPostPage = () => {
   const shareOnSocial = (platform: string) => {
     const url = `https://blacksea-blog.com/blog/${blogPost.slug}`;
     const text = `Прочитайте статтю: ${blogPost.title}`;
-    
+
     switch (platform) {
       case 'telegram':
         window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
@@ -262,15 +262,15 @@ const BlogPostPage = () => {
   }
 
   return (
-    <BlogLayout 
+    <BlogLayout
       title={`${blogPost.title} - BlackSea Blog`}
       description={blogPost.excerpt}
       ogImage={blogPost.image}
     >
       {/* Reading Progress Bar */}
       <div className="reading-progress">
-        <div 
-          className="reading-progress-bar" 
+        <div
+          className="reading-progress-bar"
           style={{ width: `${readingProgress}%` }}
         ></div>
       </div>
@@ -283,7 +283,7 @@ const BlogPostPage = () => {
               {/* Article Header */}
               <header className="mb-8">
                 <div className="flex items-center text-sm text-gray-500 mb-4">
-                  <Link 
+                  <Link
                     href={`/category/${blogPost.categorySlug}`}
                     className="text-deep-teal-primary hover:text-deep-teal-accent font-medium"
                   >
@@ -300,11 +300,11 @@ const BlogPostPage = () => {
                   <span className="mx-2">•</span>
                   <span>{blogPost.readTime}</span>
                 </div>
-                
-                <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+
+                <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                   {blogPost.title}
                 </h1>
-                
+
                 <p className="font-body text-xl text-gray-600 leading-relaxed">
                   {blogPost.excerpt}
                 </p>
@@ -321,16 +321,10 @@ const BlogPostPage = () => {
               </div>
 
               {/* Article Content */}
-              <div 
-                className="prose prose-lg max-w-none font-body text-base"
-                dangerouslySetInnerHTML={{ 
+              <div
+                className="blog-article-content"
+                dangerouslySetInnerHTML={{
                   __html: blogPost.content
-                    .replace(/<h2/g, '<h2 class="font-display text-2xl font-bold text-gray-900 mt-12 mb-6"')
-                    .replace(/<h3/g, '<h3 class="font-display text-xl font-semibold text-gray-900 mt-8 mb-4"')
-                    .replace(/<p/g, '<p class="text-gray-700 leading-relaxed mb-6"')
-                    .replace(/<ul/g, '<ul class="list-disc pl-6 space-y-2 text-gray-700 mb-6"')
-                    .replace(/<li/g, '<li class="text-gray-700"')
-                    .replace(/<a/g, '<a class="text-deep-teal-primary hover:text-deep-teal-accent underline"')
                 }}
               />
 
@@ -361,37 +355,37 @@ const BlogPostPage = () => {
                       className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.18 1.58-.76 5.92-1.07 7.86-.13.78-.39 1.04-.64.95-.56-.18-.98-.82-1.52-1.6-.85-1.18-1.18-1.54-1.93-2.47-.43-.52-.32-.8.22-1.24.52-.42 2.21-1.53 2.29-1.61.08-.08.04-.24-.12-.24s-1.68.42-2.88.72c-.82.2-1.5.02-1.88-.48-.4-.5-.96-1.68-1.32-2.32-.36-.64-.72-.56-1.02-.54-.28.02-.96.08-1.52.44-1.18.72-1.22 2.02-1.2 2.32.02.3.04.64.32 1.18.3.54 1.46 2.52 2.08 3.42.62.9 1.22 1.48.76 1.88-.46.4-1.52.04-2.1-.3-1.18-.68-2.24-1.68-2.34-1.78-.1-.1-.18-.22-.28-.12-.1.1-.1.28.02.5.1.22 1.08 2.98 2.32 4.18 1.24 1.2 2.78 1.6 2.78 1.6s.68.12 1.56-.32c.88-.44 2.1-1.68 2.58-2.22.48-.54 1.04-1.52 1.04-1.52s.16-.32.02-.68z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.18 1.58-.76 5.92-1.07 7.86-.13.78-.39 1.04-.64.95-.56-.18-.98-.82-1.52-1.6-.85-1.18-1.18-1.54-1.93-2.47-.43-.52-.32-.8.22-1.24.52-.42 2.21-1.53 2.29-1.61.08-.08.04-.24-.12-.24s-1.68.42-2.88.72c-.82.2-1.5.02-1.88-.48-.4-.5-.96-1.68-1.32-2.32-.36-.64-.72-.56-1.02-.54-.28.02-.96.08-1.52.44-1.18.72-1.22 2.02-1.2 2.32.02.3.04.64.32 1.18.3.54 1.46 2.52 2.08 3.42.62.9 1.22 1.48.76 1.88-.46.4-1.52.04-2.1-.3-1.18-.68-2.24-1.68-2.34-1.78-.1-.1-.18-.22-.28-.12-.1.1-.1.28.02.5.1.22 1.08 2.98 2.32 4.18 1.24 1.2 2.78 1.6 2.78 1.6s.68.12 1.56-.32c.88-.44 2.1-1.68 2.58-2.22.48-.54 1.04-1.52 1.04-1.52s.16-.32.02-.68z" />
                       </svg>
                       <span>Telegram</span>
                     </button>
-                    
+
                     <button
                       onClick={() => shareOnSocial('twitter')}
                       className="flex items-center space-x-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                       </svg>
                       <span>Twitter</span>
                     </button>
-                    
+
                     <button
                       onClick={() => shareOnSocial('facebook')}
                       className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                       </svg>
                       <span>Facebook</span>
                     </button>
-                    
+
                     <button
                       onClick={() => shareOnSocial('linkedin')}
                       className="flex items-center space-x-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                       </svg>
                       <span>LinkedIn</span>
                     </button>
@@ -406,12 +400,12 @@ const BlogPostPage = () => {
                       <h4 className="font-display font-medium text-gray-900 mb-1">Автоматизація з Make.com: Повний гайд для початківців</h4>
                       <p className="text-sm text-gray-600">Крок за кроком налаштовуємо автоматизацію рутинних задач</p>
                     </Link>
-                    
+
                     <Link href="/blog/seo-dlya-ukrayinskyh-blogiv" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                       <h4 className="font-display font-medium text-gray-900 mb-1">SEO для українських блогів: Повний чек-лист 2024</h4>
                       <p className="text-sm text-gray-600">Актуальні поради з оптимізації контенту</p>
                     </Link>
-                    
+
                     <Link href="/blog/monobank-api-intehraciya" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                       <h4 className="font-display font-medium text-gray-900 mb-1">Monobank API: Як інтегрувати платежі у свій продукт</h4>
                       <p className="text-sm text-gray-600">Технічний гайд з підключення платіжної системи</p>
@@ -432,7 +426,7 @@ const BlogPostPage = () => {
                     className="inline-flex items-center space-x-2 bg-white text-deep-teal-primary px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.18 1.58-.76 5.92-1.07 7.86-.13.78-.39 1.04-.64.95-.56-.18-.98-.82-1.52-1.6-.85-1.18-1.18-1.54-1.93-2.47-.43-.52-.32-.8.22-1.24.52-.42 2.21-1.53 2.29-1.61.08-.08.04-.24-.12-.24s-1.68.42-2.88.72c-.82.2-1.5.02-1.88-.48-.4-.5-.96-1.68-1.32-2.32-.36-.64-.72-.56-1.02-.54-.28.02-.96.08-1.52.44-1.18.72-1.22 2.02-1.2 2.32.02.3.04.64.32 1.18.3.54 1.46 2.52 2.08 3.42.62.9 1.22 1.48.76 1.88-.46.4-1.52.04-2.1-.3-1.18-.68-2.24-1.68-2.34-1.78-.1-.1-.18-.22-.28-.12-.1.1-.1.28.02.5.1.22 1.08 2.98 2.32 4.18 1.24 1.2 2.78 1.6 2.78 1.6s.68.12 1.56-.32c.88-.44 2.1-1.68 2.58-2.22.48-.54 1.04-1.52 1.04-1.52s.16-.32.02-.68z"/>
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.18 1.58-.76 5.92-1.07 7.86-.13.78-.39 1.04-.64.95-.56-.18-.98-.82-1.52-1.6-.85-1.18-1.18-1.54-1.93-2.47-.43-.52-.32-.8.22-1.24.52-.42 2.21-1.53 2.29-1.61.08-.08.04-.24-.12-.24s-1.68.42-2.88.72c-.82.2-1.5.02-1.88-.48-.4-.5-.96-1.68-1.32-2.32-.36-.64-.72-.56-1.02-.54-.28.02-.96.08-1.52.44-1.18.72-1.22 2.02-1.2 2.32.02.3.04.64.32 1.18.3.54 1.46 2.52 2.08 3.42.62.9 1.22 1.48.76 1.88-.46.4-1.52.04-2.1-.3-1.18-.68-2.24-1.68-2.34-1.78-.1-.1-.18-.22-.28-.12-.1.1-.1.28.02.5.1.22 1.08 2.98 2.32 4.18 1.24 1.2 2.78 1.6 2.78 1.6s.68.12 1.56-.32c.88-.44 2.1-1.68 2.58-2.22.48-.54 1.04-1.52 1.04-1.52s.16-.32.02-.68z" />
                     </svg>
                     <span>Підписатися у Telegram</span>
                   </a>
@@ -450,13 +444,11 @@ const BlogPostPage = () => {
                     <a
                       key={item.id}
                       href={`#${item.id}`}
-                      className={`block text-sm transition-colors ${
-                        activeSection === item.id 
-                          ? 'text-deep-teal-primary font-medium border-l-deep-teal-primary bg-white' 
-                          : 'text-gray-600 hover:text-gray-900'
-                      } ${
-                        item.level === 3 ? 'pl-4' : item.level === 4 ? 'pl-6' : ''
-                      }`}
+                      className={`block text-sm transition-colors ${activeSection === item.id
+                        ? 'text-deep-teal-primary font-medium border-l-deep-teal-primary bg-white'
+                        : 'text-gray-600 hover:text-gray-900'
+                        } ${item.level === 3 ? 'pl-4' : item.level === 4 ? 'pl-6' : ''
+                        }`}
                       style={{ paddingLeft: `${(item.level - 2) * 1 + 1}rem` }}
                     >
                       {item.text}
@@ -489,7 +481,7 @@ const BlogPostPage = () => {
                       className="text-gray-400 hover:text-blue-500 transition-colors"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.18 1.58-.76 5.92-1.07 7.86-.13.78-.39 1.04-.64.95-.56-.18-.98-.82-1.52-1.6-.85-1.18-1.18-1.54-1.93-2.47-.43-.52-.32-.8.22-1.24.52-.42 2.21-1.53 2.29-1.61.08-.08.04-.24-.12-.24s-1.68.42-2.88.72c-.82.2-1.5.02-1.88-.48-.4-.5-.96-1.68-1.32-2.32-.36-.64-.72-.56-1.02-.54-.28.02-.96.08-1.52.44-1.18.72-1.22 2.02-1.2 2.32.02.3.04.64.32 1.18.3.54 1.46 2.52 2.08 3.42.62.9 1.22 1.48.76 1.88-.46.4-1.52.04-2.1-.3-1.18-.68-2.24-1.68-2.34-1.78-.1-.1-.18-.22-.28-.12-.1.1-.1.28.02.5.1.22 1.08 2.98 2.32 4.18 1.24 1.2 2.78 1.6 2.78 1.6s.68.12 1.56-.32c.88-.44 2.1-1.68 2.58-2.22.48-.54 1.04-1.52 1.04-1.52s.16-.32.02-.68z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.18 1.58-.76 5.92-1.07 7.86-.13.78-.39 1.04-.64.95-.56-.18-.98-.82-1.52-1.6-.85-1.18-1.18-1.54-1.93-2.47-.43-.52-.32-.8.22-1.24.52-.42 2.21-1.53 2.29-1.61.08-.08.04-.24-.12-.24s-1.68.42-2.88.72c-.82.2-1.5.02-1.88-.48-.4-.5-.96-1.68-1.32-2.32-.36-.64-.72-.56-1.02-.54-.28.02-.96.08-1.52.44-1.18.72-1.22 2.02-1.2 2.32.02.3.04.64.32 1.18.3.54 1.46 2.52 2.08 3.42.62.9 1.22 1.48.76 1.88-.46.4-1.52.04-2.1-.3-1.18-.68-2.24-1.68-2.34-1.78-.1-.1-.18-.22-.28-.12-.1.1-.1.28.02.5.1.22 1.08 2.98 2.32 4.18 1.24 1.2 2.78 1.6 2.78 1.6s.68.12 1.56-.32c.88-.44 2.1-1.68 2.58-2.22.48-.54 1.04-1.52 1.04-1.52s.16-.32.02-.68z" />
                       </svg>
                     </a>
                   )}
@@ -501,7 +493,7 @@ const BlogPostPage = () => {
                       className="text-gray-400 hover:text-black transition-colors"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                       </svg>
                     </a>
                   )}

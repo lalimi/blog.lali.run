@@ -147,7 +147,7 @@ const BlogPost: React.FC = () => {
             <span className="text-gray-900 font-medium">{post.title_uk}</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             {post.title_uk}
           </h1>
 
@@ -222,7 +222,7 @@ const BlogPost: React.FC = () => {
         )}
 
         {/* Зміст */}
-        <div className="prose prose-lg max-w-none mb-12">
+        <div className="blog-article-content">
           {/* Анотація */}
           {post.excerpt_uk && (
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
@@ -234,13 +234,6 @@ const BlogPost: React.FC = () => {
 
           {/* Основний контент */}
           <div
-            className="prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-                       prose-p:text-gray-700 prose-p:leading-relaxed
-                       prose-ul:list-disc prose-ol:list-decimal
-                       prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4
-                       prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-                       prose-img:rounded-lg prose-img:shadow-md
-                       prose-a:text-blue-600 prose-a:hover:text-blue-800"
             dangerouslySetInnerHTML={{ __html: post.content_uk || '' }}
           />
         </div>
