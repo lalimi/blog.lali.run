@@ -51,6 +51,80 @@ router.get('/authors', async (_req, res) => {
   }
 })
 
+router.get('/posts/:slug/related', async (req, res) => {
+  try {
+    const supabaseAdmin = getSupabaseAdmin()
+    const { slug } = req.params
+    const { limit = 3 } = req.query as any
+
+    const { data: currentPost } = await supabaseAdmin
+      .from('blog_posts')
+      .select('category_id, tags:blog_post_tags(tag_id)')
+      .eq('slug', slug)
+      .single()
+
+    if (!currentPost) return res.status(404).json({ error: 'Post not found' })
+
+    const tagIds = currentPost.tags?.map((t: any) => t.tag_id) || []
+
+    const { data: relatedPosts } = await supabaseAdmin
+      .from('blog_posts')
+      .select(`
+        *,
+        category:blog_categories(*),
+        author:blog_authors(*)
+      `)
+      .neq('slug', slug)
+      .eq('published', true)
+      .or(`category_id.eq.${currentPost.category_id},and(tags.blog_tags.id.in.(${tagIds.join(',')}))`)
+      .limit(Number(limit))
+      .order('published_at', { ascending: false })
+
+    res.json(relatedPosts)
+  } catch (error: any) {
+    console.error('Error in /posts/:slug/related:', error)
+    res.status(500).json({ error: 'Failed to fetch related posts', details: error.message })
+  }
+})
+
+router.get('/posts/:slug', async (req, res) => {
+  try {
+    const supabaseAdmin = getSupabaseAdmin()
+    const { slug } = req.params
+    const { incrementViews = 'true' } = req.query as any
+
+    const { data: post, error: postError } = await supabaseAdmin
+      .from('blog_posts')
+      .select(`
+        *,
+        category:blog_categories(*),
+        author:blog_authors(*),
+        tags:blog_post_tags(blog_tags(*))
+      `)
+      .eq('slug', slug)
+      .eq('published', true)
+      .single()
+
+    if (postError) {
+      console.error('Supabase error fetching post:', postError)
+      throw postError
+    }
+    if (!post) return res.status(404).json({ error: 'Post not found' })
+
+    if (incrementViews === 'true') {
+      await supabaseAdmin
+        .from('blog_posts')
+        .update({ views_count: (post.views_count || 0) + 1 })
+        .eq('id', post.id)
+    }
+
+    res.json(post)
+  } catch (error: any) {
+    console.error('Error in /posts/:slug:', error)
+    res.status(500).json({ error: 'Failed to fetch post', details: error.message })
+  }
+})
+
 router.get('/posts', async (req, res) => {
   try {
     const supabaseAdmin = getSupabaseAdmin()
@@ -90,75 +164,6 @@ router.get('/posts', async (req, res) => {
     })
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch posts' })
-  }
-})
-
-router.get('/posts/:slug', async (req, res) => {
-  try {
-    const supabaseAdmin = getSupabaseAdmin()
-    const { slug } = req.params
-    const { incrementViews = 'true' } = req.query as any
-
-    const { data: post, error: postError } = await supabaseAdmin
-      .from('blog_posts')
-      .select(`
-        *,
-        category:blog_categories(*),
-        author:blog_authors(*),
-        tags:blog_post_tags(blog_tags(*))
-      `)
-      .eq('slug', slug)
-      .eq('published', true)
-      .single()
-
-    if (postError) throw postError
-    if (!post) return res.status(404).json({ error: 'Post not found' })
-
-    if (incrementViews === 'true') {
-      await supabaseAdmin
-        .from('blog_posts')
-        .update({ views_count: (post.views_count || 0) + 1 })
-        .eq('id', post.id)
-    }
-
-    res.json(post)
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch post' })
-  }
-})
-
-router.get('/posts/:slug/related', async (req, res) => {
-  try {
-    const supabaseAdmin = getSupabaseAdmin()
-    const { slug } = req.params
-    const { limit = 3 } = req.query as any
-
-    const { data: currentPost } = await supabaseAdmin
-      .from('blog_posts')
-      .select('category_id, tags:blog_post_tags(tag_id)')
-      .eq('slug', slug)
-      .single()
-
-    if (!currentPost) return res.status(404).json({ error: 'Post not found' })
-
-    const tagIds = currentPost.tags?.map((t: any) => t.tag_id) || []
-
-    const { data: relatedPosts } = await supabaseAdmin
-      .from('blog_posts')
-      .select(`
-        *,
-        category:blog_categories(*),
-        author:blog_authors(*)
-      `)
-      .neq('slug', slug)
-      .eq('published', true)
-      .or(`category_id.eq.${currentPost.category_id},and(tags.blog_tags.id.in.(${tagIds.join(',')}))`)
-      .limit(Number(limit))
-      .order('published_at', { ascending: false })
-
-    res.json(relatedPosts)
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch related posts' })
   }
 })
 
