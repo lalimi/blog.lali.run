@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import BlogLayout from '../../components/blog/BlogLayout';
 import Link from 'next/link';
+import { sanitizeHtml } from '../../src/utils/sanitizeHtml';
 
 interface BlogPost {
   id: string;
@@ -324,7 +325,7 @@ const BlogPostPage = () => {
               <div
                 className="blog-article-content"
                 dangerouslySetInnerHTML={{
-                  __html: blogPost.content
+                  __html: sanitizeHtml(blogPost.content)
                 }}
               />
 

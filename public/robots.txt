@@ -5,6 +5,11 @@ Allow: /
 Disallow: /admin
 Disallow: /api
 
+# Блокування підозрілих файлів
+Disallow: /*.txt$
+Disallow: /*.log$
+Disallow: /*.bak$
+
 # Статичні ресурси
 Allow: /assets
 Allow: /images

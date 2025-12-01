@@ -7,6 +7,7 @@ import OptimizedImage from '../../components/blog/OptimizedImage'
 import RelatedPosts from '../../components/blog/RelatedPosts'
 import CTABlock from '../../components/blog/CTABlock'
 import Breadcrumb from '../../components/blog/Breadcrumb'
+import { sanitizeHtml } from '../../utils/sanitizeHtml'
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
@@ -234,7 +235,7 @@ const BlogPost: React.FC = () => {
 
           {/* Основний контент */}
           <div
-            dangerouslySetInnerHTML={{ __html: post.content_uk || '' }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content_uk || '') }}
           />
         </div>
 
